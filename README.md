@@ -4,15 +4,13 @@ Work-in-progress documentation system which aims to replace Confluence with tech
 Please write all new documentation into this system instead of Confluence.
 
 ## How to write documentation
-Currently the documenation system is divided into two parts:
- - **public**
-   - Documentation suitable for everyone hosted publicaly on `docs.elixeum.cloud`
- - **private**
-   - Our internal documentation which should not be shared publicaly including any keys or secrets
+
+This is **public** Elixeum platform documenation soon available on `docs.elixeum.cloud`.
+Goals of this documentation is to provide description, examples and guides how to integrate with Elixeum platform.
+
+### Create a page
 
 At the begining just select in which part of documentation your text should be and create sub-folder or just `.md` file and write your text.
-
-> In the future the documenation will be physically divided - once the public part becomes really public.
 
 ### Markdown
 
