@@ -1,2 +1,3 @@
 - [Home]()
 - [Quick Start Guide](quick-start)
+- [Tips and Rules](rules)
