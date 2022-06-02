@@ -1,6 +1,7 @@
 version: "3.9"
 
 services:
+  docs:
     image: registry.docker.elixeum.cloud/platform/docs:latest
     build:
       context: ./
