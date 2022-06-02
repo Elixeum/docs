@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+    image: registry.docker.elixeum.cloud/platform/docs:latest
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+
+networks:
+  default:
+    name: services # Connect to the services network due reverse proxy being part of that network
+    external: true
