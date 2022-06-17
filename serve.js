@@ -30,9 +30,10 @@ const aliases = {
 // List of possible insercure paths, which are not allowed to be accessed
 const insecurePaths = ['..'];
 
-// Trival argument parsing, only two are supported at this moment:
+// Trival argument parsing (not foolproof):
 // --port <port>
 // --verbose
+// --hostname <hostname>
 for (let i = 0; i < args.length; i++) {
     switch (args[i]) {
         case '--port':
@@ -72,7 +73,7 @@ http.createServer((req, res) => {
 
     if (aliases[req.url]) {
         if (isVerbose) {
-            console.log(`${outputMarker} Request matches aliased path`);
+            console.log(`${outputMarker} Request matches aliased path ${req.url} => ${aliases[req.url]}`);
         }
 
         file = serveRoot + aliases[req.url];
