@@ -12,4 +12,4 @@ Status description:
 | Suspended: | The user has been suspended by an administrator. They will not be able to log in again until an administrator returns this status.                                                       |
 | Deactivated: | A user with a disabled state cannot log on to the system and all resources are removed. An administrator can delete deactivated users. When done, they will be removed from the system.|
 
-![](../../../../../Diagrams/user_lifecycle.png)
+![](../../assets/user_lifecycle.png)
