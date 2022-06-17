@@ -1,6 +1,6 @@
-# Elixeum Code Style
+# Code Style
 
-In Elixeum we use code styles based on which language is being used, if you working on extension or application which will use our services - you may use our code style as inspiration to have cleaner and unified style.
+In Elixeum we use code styles based on which language is being used, if you working on extension or application which will use our services - you may use our code style as an inspiration to have cleaner and unified code style.
 
 ## REST Guidelines
 
