@@ -1,3 +1,5 @@
-- [Home]()
-- [Quick Start Guide](quick-start)
-- [Tips and Rules](rules)
+- [Home](/)
+- [Tips and Rules](/rules)
+- Developer
+ - [Quick Start Guide](/developer/quick-start)
+ - [Code Style](/developer/code-style)
