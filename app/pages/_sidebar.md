@@ -3,3 +3,5 @@
 - Developer
  - [Quick Start Guide](/developer/quick-start)
  - [Code Style](/developer/code-style)
+- Manual
+  - [User states](manual/user-states.md)
