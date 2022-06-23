@@ -20,7 +20,7 @@ let httpProtocol = 'http';
 let httpPort = 8080;
 let httpHostname = 'localhost';
 let isVerbose = false;
-let serveRoot = __dirname + path.sep + 'app';
+let serveRoot = __dirname + path.sep + 'docs';
 
 // Map for file aliases, especially to support empty request to map it to index.html
 const aliases = {
