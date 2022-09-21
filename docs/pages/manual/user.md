@@ -1,4 +1,6 @@
-# User states
+# User
+
+## User states
 
 Status description:
 
@@ -12,4 +14,14 @@ Status description:
 | Suspended: | The user has been suspended by an administrator. They will not be able to log in again until an administrator returns this status.                                                       |
 | Deactivated: | A user with a disabled state cannot log on to the system and all resources are removed. An administrator can delete deactivated users. When done, they will be removed from the system.|
 
-![](../../assets/user_lifecycle.png)
+![User lifecycle](../../assets/user_lifecycle.png)
+
+## User imports
+
+Users can be imported via a CSV file.
+The file must follow the given structure exactly, otherwise the import may fail.
+
+File header definition:
+<code>titleBeforeName;firstName;lastName;titleAfterName;emailAddress;phoneNumber</code>
+
+File example: [Download](../../assets/users_import_example.csv ':ignore')
