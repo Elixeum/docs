@@ -18,10 +18,10 @@ Status description:
 
 ## User imports
 
-Users can be imported via a CSV file.
+Users can be imported via a CSV file (UTF-8).
 The file must follow the given structure exactly, otherwise the import may fail.
 
 File header definition:
 <code>titleBeforeName;firstName;lastName;titleAfterName;emailAddress;phoneNumber</code>
 
-File example: [Download](../../assets/users_import_example.csv ':ignore')
+File example: [Download](/assets/users_import_example.csv ':ignore')
