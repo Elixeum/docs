@@ -1,0 +1,6 @@
+titleBeforeName;firstName;lastName;titleAfterName;emailAddress;phoneNumber
+Ing;Testovací;Testič;Ph.D.;test1.test1@test.com;987654321
+;John;Wong;Ed.D.;test2.test2@test.com;+420987654321
+Bc.;Petr;Novák;Ph.D.;test3.test3@test.com;123456789
+;Alena;Malá;R.N.;test4.test4@test.com;+420999888777
+Ing;Náhodný;Kolemjdoucí;;test5.test5@test.com;+420123456789
