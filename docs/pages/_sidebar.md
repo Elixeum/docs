@@ -5,3 +5,4 @@
  - [Code Style](/developer/code-style)
 - Manual
  - [User](/manual/user)
+ - [Custom Email server](/manual/custom-smtp-server)
