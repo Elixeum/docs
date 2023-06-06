@@ -3,6 +3,7 @@
 - Developer
  - [Quick Start Guide](/developer/quick-start)
  - [Code Style](/developer/code-style)
+ - [API](/developer/api/)
 - Manual
  - [User](/manual/user)
  - [Custom Email server](/manual/custom-smtp-server)
