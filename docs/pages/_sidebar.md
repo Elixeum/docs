@@ -4,6 +4,7 @@
  - [Quick Start Guide](/developer/quick-start)
  - [Code Style](/developer/code-style)
  - [API](/developer/api/)
+ - [Data Warehouse](/developer/api/data-warehouse)
 - Manual
  - [User](/manual/user)
  - [Custom Email server](/manual/custom-smtp-server)
