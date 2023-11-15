@@ -7,8 +7,12 @@ Creates new contract to database.
 
 Endpoint: `POST /contract-planning-service/api/Contract`
 
+Required permissions: `com.elixeum.contract-planning.create`
+
 Required parameters:
+
 - `contract.contractTypeId`
+
 - `contract.typeNumber`
 
 #### contract.contractTypeId + contract.typeNumber
@@ -146,9 +150,14 @@ Updates specific contract to database.
 
 Endpoint: `PUT /contract-planning-service/api/Contract`
 
+Required permissions: `com.elixeum.contract-planning.edit`
+
 Required parameters:
+
 - `contract.id`
+
 - `contract.contractTypeId`
+
 - `contract.typeNumber`
 
 Example request body:
@@ -257,7 +266,10 @@ Marks specific contract as deleted. Contract still exists in the database.
 
 Endpoint: `DELETE /contract-planning-service/api/Contract/{id:uuid}`
 
+Required permissions: `com.elixeum.contract-planning.delete`
+
 Required parameters:
+
 `id:uuid` - Contract identification
 
 ?> Example: `DELETE /contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521`
@@ -267,8 +279,12 @@ Updates status to specific contract.
 
 Endpoint: `PUT /contract-planning-service/api/Contract/{id:uuid}/status/{statusId:uuid}`
 
+Required permissions: `com.elixeum.contract-planning.edit`
+
 Required parameters:
+
 `id:uuid` - Contract identification
+
 `statusId:uuid` - Status identification. To list all statuses use [ContractTypeCustomField/List](#ContractTypeCustomField)
 
 ?> Example: `PUT /contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521/status/0121d2ba-7b35-4c81-9560-256b3013df36`
@@ -277,7 +293,7 @@ Required parameters:
 Gets specific contract from database by Id
 
 Endpoint: `GET /contract-planning-service/api/Contract/{id:uuid}`
-
+Required permissions: `com.elixeum.contract-planning.can-use`
 Required parameters:
 `id` - Contract identification
 
@@ -288,13 +304,22 @@ Gets a list of contracts from database.
 
 Endpoint: `GET /contract-planning-service/api/Contract/{id:uuid}`
 
+Required permissions: `com.elixeum.contract-planning.list`
+
 Params:
+
 `offset:int` - The number of records that is skipped
+
 `count:int` - The maximum number of records to return
+
 `showDeleted:bool (default = false)` - Set 'true' to include deleted records
+
 `includeResolved:bool (default = true)` - Set 'true' to include resolved records
+
 `unscheduled:bool (default = false)` - Set 'true' to include unscheduled records
+
 `includeCustomFields:bool (default = true)` - Set 'true' to include custom fields
+
 `contractTypeId:uuid` - Set for list contracts with specific ContractType
 
 ?> Example: `GET /contract-planning-service/api/Contract/list?offset=0&count=50&showDeleted=false&includeResolved=true&unscheduled=false&unscheduled=true`
@@ -323,8 +348,12 @@ Gets a list of contract types from database.
 
 Endpoint: `GET /contract-planning-service/api/ContractType/list`
 
+Required permissions: `com.elixeum.contract-planning.list`
+
 Params:
+
 `offset:int` - The number of records that is skipped
+
 `count:int` - The maximum number of records to return
 
 For list first top 50 records use endpoint without parameter.
@@ -341,9 +370,14 @@ Gets a list of contract type custom fields from database.
 
 Endpoint: `GET /contract-planning-service/api/contractTypeCustomField/list/{contractTypeId:uuid}`
 
+Required permissions: `com.elixeum.contract-planning.list`
+
 Params:
+
 `contractTypeId:uuid` - Contract type identification
+
 `offset:int` - The number of records that is skipped
+
 `count:int` - The maximum number of records to return
 
 For list first top 50 records use endpoint without parameter.
@@ -360,9 +394,14 @@ Gets a list of workflows from the database.
 
 Endpoint: `GET /contract-planning-service/api/workflow/status/list/{workflowId:uuid}`
 
+Required permissions: `com.elixeum.contract-planning.list`
+
 Params:
+
 `workflowId:uuid` - Workflow identification. It's set to `ContractType.WorkflowId`
+
 `offset:int` - The number of records that is skipped
+
 `count:int` - The maximum number of records to return
 
 For list first top 50 records use endpoint without parameter.
