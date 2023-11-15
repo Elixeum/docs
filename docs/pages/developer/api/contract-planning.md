@@ -1,4 +1,9 @@
 # Contract Planning
+To call any endpoint is required authentication by JWT token. Token must be filled in request header as `Authorization: Bearer {token}`.
+
+API supports **User Token** and **Application Token**.
+
+See more about authentication [here](/developer/api/README?id=authentication)
 
 ## Contract
 

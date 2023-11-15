@@ -4,6 +4,7 @@
  - [Quick Start Guide](/developer/quick-start)
  - [Code Style](/developer/code-style)
  - [API](/developer/api/)
+   - [Elixeum API](/developer/api/README)
    - [Contract Planning](/developer/api/contract-planning)
  - [Data Warehouse](/developer/api/data-warehouse)
 - Manual
