@@ -5,7 +5,7 @@
 ### Create
 Creates new contract to database.
 
-Endpoint: `POST: {hostName}/contract-planning-service/api/Contract`
+Endpoint: `POST /contract-planning-service/api/Contract`
 
 Required parameters:
 - `contract.contractTypeId`
@@ -144,7 +144,7 @@ Example request body for contract with customer as person:
 ### Update
 Updates specific contract to database.
 
-Endpoint: `PUT: {hostName}/contract-planning-service/api/Contract`
+Endpoint: `PUT /contract-planning-service/api/Contract`
 
 Required parameters:
 - `contract.id`
@@ -255,38 +255,38 @@ Example request body:
 ### Delete
 Marks specific contract as deleted. Contract still exists in the database.
 
-Endpoint: `DELETE: {hostName}/contract-planning-service/api/Contract/{id:guid}`
+Endpoint: `DELETE /contract-planning-service/api/Contract/{id:uuid}`
 
 Required parameters:
-`id:guid` - Contract identification
+`id:uuid` - Contract identification
 
-?> Example: `DELETE: {hostName}/contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521`
+?> Example: `DELETE /contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521`
 
 ### Status change
 Updates status to specific contract.
 
-Endpoint: `PUT: {hostName}/contract-planning-service/api/Contract/{id:guid}/status/{statusId:guid}`
+Endpoint: `PUT /contract-planning-service/api/Contract/{id:uuid}/status/{statusId:uuid}`
 
 Required parameters:
-`id:guid` - Contract identification
-`statusId:guid` - Status identification. To list all statuses use [ContractTypeCustomField/List](#ContractTypeCustomField)
+`id:uuid` - Contract identification
+`statusId:uuid` - Status identification. To list all statuses use [ContractTypeCustomField/List](#ContractTypeCustomField)
 
-?> Example: `PUT: {hostName}/contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521/status/0121d2ba-7b35-4c81-9560-256b3013df36`
+?> Example: `PUT /contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521/status/0121d2ba-7b35-4c81-9560-256b3013df36`
 
 ### Get
 Gets specific contract from database by Id
 
-Endpoint: `GET: {hostName}/contract-planning-service/api/Contract/{id:guid}`
+Endpoint: `GET /contract-planning-service/api/Contract/{id:uuid}`
 
 Required parameters:
 `id` - Contract identification
 
-?> Example: `GET: {hostName}/contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521`
+?> Example: `GET /contract-planning-service/api/Contract/f75a5d05-41f0-4176-990b-7f81447be521`
 
 ### List
 Gets a list of contracts from database.
 
-Endpoint: `GET: {hostName}/contract-planning-service/api/Contract/{id:guid}`
+Endpoint: `GET /contract-planning-service/api/Contract/{id:uuid}`
 
 Params:
 `offset:int` - The number of records that is skipped
@@ -295,9 +295,9 @@ Params:
 `includeResolved:bool (default = true)` - Set 'true' to include resolved records
 `unscheduled:bool (default = false)` - Set 'true' to include unscheduled records
 `includeCustomFields:bool (default = true)` - Set 'true' to include custom fields
-`contractTypeId:guid` - Set for list contracts with specific ContractType
+`contractTypeId:uuid` - Set for list contracts with specific ContractType
 
-?> Example: `GET: {hostName}/contract-planning-service/api/Contract/list?offset=0&count=50&showDeleted=false&includeResolved=true&unscheduled=false&unscheduled=true`
+?> Example: `GET /contract-planning-service/api/Contract/list?offset=0&count=50&showDeleted=false&includeResolved=true&unscheduled=false&unscheduled=true`
 
 ### General enums
 ```
@@ -321,7 +321,7 @@ ContractType is necessary to existence of Contract.
 ### List
 Gets a list of contract types from database.
 
-Endpoint: `GET: {hostName}/contract-planning-service/api/ContractType/list`
+Endpoint: `GET /contract-planning-service/api/ContractType/list`
 
 Params:
 `offset:int` - The number of records that is skipped
@@ -331,7 +331,7 @@ For list first top 50 records use endpoint without parameter.
 
 For get another page or more record use params `offset` and `count`.
 
-?> Example: `GET: {hostName}/contract-planning-service/api/ContractType/list?offset=0&count=200`
+?> Example: `GET /contract-planning-service/api/ContractType/list?offset=0&count=200`
 
 ## ContractTypeCustomField
 Optional custom fields for contract
@@ -339,10 +339,10 @@ Optional custom fields for contract
 ### List
 Gets a list of contract type custom fields from database.
 
-Endpoint: `GET: {hostName}/contract-planning-service/api/contractTypeCustomField/list/{contractTypeId:guid}`
+Endpoint: `GET /contract-planning-service/api/contractTypeCustomField/list/{contractTypeId:uuid}`
 
 Params:
-`contractTypeId:guid` - Contract type identification
+`contractTypeId:uuid` - Contract type identification
 `offset:int` - The number of records that is skipped
 `count:int` - The maximum number of records to return
 
@@ -350,7 +350,7 @@ For list first top 50 records use endpoint without parameter.
 
 For get another page or more record use params `offset` and `count`.
 
-?> Example: `GET: {hostName}/contract-planning-service/api/contractTypeCustomField/list/7b2c7daf-d691-41d6-ad2c-b3f51ba90cc6?offset=0&count=200`
+?> Example: `GET /contract-planning-service/api/contractTypeCustomField/list/7b2c7daf-d691-41d6-ad2c-b3f51ba90cc6?offset=0&count=200`
 
 ## WorkflowStatus
 Required for create contract. Need to be set all workflow first and assign it to the ContractType.
@@ -358,10 +358,10 @@ Required for create contract. Need to be set all workflow first and assign it to
 ### List
 Gets a list of workflows from the database.
 
-Endpoint: `GET: {hostName}/contract-planning-service/api/workflow/status/list/{workflowId:guid}`
+Endpoint: `GET /contract-planning-service/api/workflow/status/list/{workflowId:uuid}`
 
 Params:
-`workflowId:guid` - Workflow identification. It's set to `ContractType.WorkflowId`
+`workflowId:uuid` - Workflow identification. It's set to `ContractType.WorkflowId`
 `offset:int` - The number of records that is skipped
 `count:int` - The maximum number of records to return
 
@@ -369,4 +369,4 @@ For list first top 50 records use endpoint without parameter.
 
 For get another page or more record use params `offset` and `count`.
 
-?> Example: `GET: {hostName}/contract-planning-service/api/workflow/status/list/7b2c7daf-d691-41d6-ad2c-b3f51ba90cc6?offset=0&count=200`
+?> Example: `GET /contract-planning-service/api/workflow/status/list/7b2c7daf-d691-41d6-ad2c-b3f51ba90cc6?offset=0&count=200`
