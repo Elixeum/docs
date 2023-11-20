@@ -2,10 +2,13 @@
 // By-design this web server does not use any external packages so it can be run as-is without installing any dependencies.
 // Yet it is very dumb and insecure, so use it wisely!
 
-const http = require("node:http");
-const fs = require("node:fs");
-const path = require("node:path");
-const crypto = require("node:crypto");
+import http from "node:http";
+import fs from "node:fs";
+import path, { dirname } from "node:path";
+import crypto from "node:crypto";
+import process from "node:process";
+
+const __dirname = dirname(new URL(import.meta.url).pathname);
 
 const args = process.argv.slice(2);
 const nodeMajorVersion = process.version.match(/^v(\d+)/)[1]; // Omit minor, patch version from version string
@@ -14,6 +17,32 @@ const nodeMajorVersion = process.version.match(/^v(\d+)/)[1]; // Omit minor, pat
 if (nodeMajorVersion < 15) {
   console.error("This server requires Node.js v15 or higher. Please upgrade your Node.js installation.");
   process.exit(1);
+}
+
+// Map file extension to content type
+function extensionToContentType(extension) {
+  switch (extension) {
+    case ".html":
+      return "text/html";
+    case ".css":
+      return "text/css";
+    case ".js":
+      return "text/javascript";
+    case ".json":
+      return "application/json";
+    case ".png":
+      return "image/png";
+    case ".jpg":
+      return "image/jpg";
+    case ".gif":
+      return "image/gif";
+    case ".svg":
+      return "image/svg+xml";
+    case ".md":
+      return "text/markdown";
+    default:
+      return "text/plain";
+  }
 }
 
 let httpProtocol = "http";
@@ -30,7 +59,7 @@ const aliases = {
 // List of possible insecure paths, which are not allowed to be accessed
 const insecurePaths = [".."];
 
-// Trivial argument parsing (not foolproof):
+// Trivial argument parsing
 // --port <port>
 // --verbose
 // --hostname <hostname>
@@ -61,7 +90,7 @@ console.log(`Open web browser at ${httpProtocol}://${httpHostname}:${httpPort}`)
 http
   .createServer((req, res) => {
     let file = serveRoot + req.url;
-    let requestId = crypto.randomBytes(3 * 4).toString("base64"); // ID for logging to distinquish requests from each other
+    let requestId = crypto.randomBytes(3 * 4).toString("base64"); // ID for logging to distinguish requests from each other
     let timeNow = new Date();
 
     let timeMarker = `[${timeNow.getHours()}:${timeNow.getMinutes()}:${timeNow.getSeconds()}]`;
@@ -96,13 +125,13 @@ http
       }
 
       if (err) {
-        res.writeHead(404);
+        res.writeHead(404, { "Content-Type": "text/plain" });
         res.end("404 Not Found");
 
         return;
       }
 
-      res.writeHead(200);
+      res.writeHead(200, { "Content-Type": extensionToContentType(path.extname(file)) });
       res.end(data);
     });
   })

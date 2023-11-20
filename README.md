@@ -21,10 +21,10 @@ Some of these are used in `rules.md` so go and have a look at it :smile:
 ## How to start
 
 Due browsers security limitations you can not open directly `index.html` as it will block loading external resources due `file://` protocol.
-You need to setup simple local server to serve assets, for example you can use Node and pre-existing `serve.js` to start simple HTTP server.
+You need to setup simple local server to serve assets, for example you can use Node and pre-existing `serve.mjs` to start simple HTTP server.
 
 ```shell
-node serve.js --port <port> # Default is 8080
+node serve.mjs --port <port> # Default is 8080
 ```
 
 You may enable verbose output by passing `--verbose` flag - this will enable additional logs.
