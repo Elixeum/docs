@@ -24,7 +24,14 @@ Due browsers security limitations you can not open directly `index.html` as it w
 You need to setup simple local server to serve assets, for example you can use Node and pre-existing `serve.mjs` to start simple HTTP server.
 
 ```shell
-node serve.mjs --port <port> # Default is 8080
+#!/bin/sh
+node serve.mjs --verbose --port <port> # Default is 8080
+
+# Or using Bun
+bun run serve -- --verbose --port <port>
+
+# Or using Deno
+deno run --allow-net --allow-read serve.mjs --verbose --port <port>
 ```
 
 You may enable verbose output by passing `--verbose` flag - this will enable additional logs.
