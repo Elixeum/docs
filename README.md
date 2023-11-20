@@ -5,16 +5,16 @@ Please write all new documentation into this system instead of Confluence.
 
 ## How to write documentation
 
-This is **public** Elixeum platform documenation soon available on `docs.elixeum.cloud`.
+This is **public** Elixeum platform documentation soon available on `docs.elixeum.cloud`.
 Goals of this documentation is to provide description, examples and guides how to integrate with Elixeum platform.
 
 ### Create a page
 
-At the begining just select in which part of documentation your text should be and create sub-folder or just `.md` file and write your text.
+At the beginning just select in which part of documentation your text should be and create sub-folder or just `.md` file and write your text.
 
 ### Markdown
 
-All documentation is using Markdown for formatting your text, this documenation system has few extensions like Mermaid for diagrams or tabs for - obviously - tabs which can be used for code examples in various languages.
+All documentation is using Markdown for formatting your text, this documentation system has few extensions like Mermaid for diagrams or tabs for - obviously - tabs which can be used for code examples in various languages.
 
 Some of these are used in `rules.md` so go and have a look at it :smile:
 
@@ -29,7 +29,7 @@ node serve.js --port <port> # Default is 8080
 
 You may enable verbose output by passing `--verbose` flag - this will enable additional logs.
 
-*Note that at least Node **version 15+** is required.*
+_Note that at least Node **version 15+** is required._
 
 ## Docker support
 

@@ -1,6 +1,4 @@
-# Elixeum Cloud Platform
-
-![banner](https://www.elixeum.com/images/preview.png)
+# Elixeum Cloud Platform Documentation
 
 Welcome to Elixeum Platform technical documentation! We are thrilled to have you here :wave:
 

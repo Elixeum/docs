@@ -7,9 +7,10 @@ In the Data Warehouse system, you can store various types of data and use our co
 # Writing Data
 
 Writing a data into data lake is possible in three ways:
- - Single item - just a single instance of information
- - Multiple items - "array" of information (limited to overal size)
- - Streaming - real-time API for extreme high-volume and high-frequence data
+
+- Single item - just a single instance of information
+- Multiple items - "array" of information (limited to overal size)
+- Streaming - real-time API for extreme high-volume and high-frequence data
 
 ?> Only **Single item** is currently exposed for users and public, if you want to test and help us shape the **Multiple** or **Streaming** APIs - get in touch with us
 
@@ -35,14 +36,14 @@ Sinks also support compression, so if you know your data will be a good fit for 
 
 !> You can change the compression type after the sink is created, but already written data will stay in the previously selected compression
 
-| Compression | Usage |
-|-------------|-------|
-| Brotli Optimal | Brotli compression with good balance between size and speed |
+| Compression     | Usage                                                           |
+| --------------- | --------------------------------------------------------------- |
+| Brotli Optimal  | Brotli compression with good balance between size and speed     |
 | Brotli Smallest | Brotli compression with maximum focus on smallest size possible |
-| Gzip Optimal | Gzip compression with good balance between size and speed |
-| Gzip Smallest | Gzip compression with maximum focus on smallest size possible |
-| Zstd | Planned, not supported yet |
-| L4Z | Planned, not supported yet |
+| Gzip Optimal    | Gzip compression with good balance between size and speed       |
+| Gzip Smallest   | Gzip compression with maximum focus on smallest size possible   |
+| Zstd            | Planned, not supported yet                                      |
+| L4Z             | Planned, not supported yet                                      |
 
 #### Why should I select different compression types?
 
@@ -56,12 +57,12 @@ From our testing using **Brotli Optimal** is generally good for any smaller text
 
 Sinks can contain various data types, but the type must be defined beforehand to make assumptions down the line in processing pipelines.
 
-| Format | Content Type | Comment |
-|--------|--------------|---------|
-| JSON | `application/json` | Generic JSON format, structure is not enforced. JSON must be valid. |
-| XML | `application/xml` | Planned, not supported yet |
-| ProtoBuf | `application/x-protobuf` | Planned, not supported yet |
-| Binary | `application/octet-stream` | Planned, not supported yet |
+| Format   | Content Type               | Comment                                                             |
+| -------- | -------------------------- | ------------------------------------------------------------------- |
+| JSON     | `application/json`         | Generic JSON format, structure is not enforced. JSON must be valid. |
+| XML      | `application/xml`          | Planned, not supported yet                                          |
+| ProtoBuf | `application/x-protobuf`   | Planned, not supported yet                                          |
+| Binary   | `application/octet-stream` | Planned, not supported yet                                          |
 
 ### Deletion
 
@@ -81,4 +82,3 @@ When a write is successful the API returns `200 OK` status code.
 ## Browser
 
 You can use a simple data lake browser in our web application interface to confirm the data are properly stored. Keep in mind this UI is only meant for confirmation and some basic checks, no advanced filtering or any complex operations are not possible and not planned.
-
