@@ -74,6 +74,8 @@ Organization object:
 }
 ```
 
+### Examples
+
 Example request body for contract with customer as person:
 
 ```json
