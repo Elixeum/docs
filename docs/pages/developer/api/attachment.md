@@ -2,7 +2,7 @@
 
 ## Authentication
 
-All endpoints on **Contract Planning** requires authentication using valid JWT token.
+All endpoints on **Attachment** require authentication using valid JWT token.
 
 Token must be filled in `Authorization` request header, for example `Authorization: Bearer {token}`.
 
@@ -16,6 +16,7 @@ Token must be filled in `Authorization` request header, for example `Authorizati
 ### Add
 
 Upload file as attachment linked to specific context (Contract, Contact, ... ).
+
 **Content-Type: multipart/form-data**
 
 |              |                                                                                                 |
@@ -39,8 +40,8 @@ Upload file as attachment linked to specific context (Contract, Contact, ... ).
 
 - `contextId` (required) - ID of context like contract or contact.
 - `attachmentType` (required) - Default (1) or Poster (2). Mostly is used Default(1) to upload attachment to list. To see image on main page of contract use Poster(2).
-- `roleIdList` (optional) - Attachment visible only to roles from this list. Default is empty list to see for all users.
-- `description` (optional) - Text description.
+- `roleIdList` (optional) - An attachment will be visible only to the roles on this list. Default is empty list, which makes the attachment visible to all users.
+- `description` (optional) - Additional description of the attachment.
 - `attachmentDictionaryId` (optional) - ID of dictionary. Default is NULL for not using dictionary.
 
 ### Examples

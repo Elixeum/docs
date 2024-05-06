@@ -2,7 +2,7 @@
 
 ## Authentication
 
-All endpoints on **Contract Planning** requires authentication using valid JWT token.
+All endpoints on **Contract Planning** require authentication using valid JWT token.
 
 Token must be filled in `Authorization` request header, for example `Authorization: Bearer {token}`.
 
