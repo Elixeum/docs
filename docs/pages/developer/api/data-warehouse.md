@@ -57,12 +57,12 @@ From our testing using **Brotli Optimal** is generally good for any smaller text
 
 Sinks can contain various data types, but the type must be defined beforehand to make assumptions down the line in processing pipelines.
 
-| Format   | Content Type               | Comment                                                             |
-| -------- | -------------------------- | ------------------------------------------------------------------- |
-| JSON     | `application/json`         | Generic JSON format, structure is not enforced. JSON must be valid. |
-| XML      | `application/xml`          | Planned, not supported yet                                          |
-| ProtoBuf | `application/x-protobuf`   | Planned, not supported yet                                          |
-| Binary   | `application/octet-stream` | Planned, not supported yet                                          |
+| Format   | Content Type               | Comment                                                                          |
+| -------- | -------------------------- | -------------------------------------------------------------------------------- |
+| JSON     | `application/json`         | Generic JSON format, structure is not enforced. JSON must be valid.              |
+| Binary   | `application/octet-stream` | Generic binary data. Used for other compressed formats (currenty JSON **only**). |
+| XML      | `application/xml`          | Planned, not supported yet                                                       |
+| ProtoBuf | `application/x-protobuf`   | Planned, not supported yet                                                       |
 
 ### Deletion
 
@@ -78,6 +78,33 @@ Use `POST` HTTP method and the `/data-warehouse/api/v1/sink/{sink-name}` endpoin
 Do not forget to add tokens and proper content-type headers for successful writing.
 
 When a write is successful the API returns `200 OK` status code.
+
+### Writing Compressed Data
+
+Sink also alows you to write pre-compressed data. To do so, you'll need to specify a `Content-Encoding` header and change the `Content-Type` header in your `POST` request to `application/octet-stream` (since you'll be writing raw binary data). You can use one of the following compression:
+
+| Compression     | `Content-Encoding` header value                                 |
+| --------------- | --------------------------------------------------------------- |
+| Brotli Optimal  | br                                                              |
+| Brotli Smallest | br                                                              |
+| Gzip Optimal    | gzip                                                            |
+| Gzip Smallest   | gzip                                                            |
+
+After setting up your request use the method described above to write data into selected sink.
+
+!> Compressed data must be in the JSON format as it's the only supported format for now.
+
+?> You can change the compression between different API calls, but don't forget to change the `Content-Encoding` header value as well.
+
+### Writing Data In Batch
+
+If you don't want to call the API everytime you want to write a single item, you can write multiple items at once using the batch endpoint.
+Batch endpoint has the same address as regular write endpoint with `/batch` added at the end, so in our example it would look like this:
+`/data-warehouse/api/v1/sink/{sink-name}/batch`
+
+!> Data sent to this endpoint must be a valid JSON array.
+
+?> You can write compressed data using the batch endpoint as well. Learn more about writing compressed data [here](#writing-compressed-data)
 
 ## Browser
 
