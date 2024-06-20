@@ -129,7 +129,7 @@ Example request body for contract with customer as person:
         "date": "2024-06-20",
         "documentCurrencyCode": "CZK",
         "mainCurrencyCode": "CZK",
-        "headerType": 1
+        "headerType": 1 // main
       },
       {
         "isPerson": true,
@@ -141,21 +141,21 @@ Example request body for contract with customer as person:
         "middleName": "Alias",
         "cin": "11112222",
         "telephone": "+420420464646",
-        "headerType": 2
+        "headerType": 2 // contact
       },
       {
         "countryCode": "CZ",
         "postalCode": "12345",
         "addressLine1": "Fakturační",
         "city": "Adresa",
-        "headerType": 5
+        "headerType": 5 // contact(invoice) address
       },
       {
         "countryCode": "CZ",
         "addressLine1": "Dodací",
         "postalCode": "12345",
         "city": "Adresa",
-        "headerType": 6
+        "headerType": 6 // delivery address
       }
     ],
     // items
@@ -168,7 +168,7 @@ Example request body for contract with customer as person:
             "quantity": 5,
             "note": "note_test",
             "secondUnitQuantity": 20,
-            "entryType": 1
+            "entryType": 1 // main
           },
           {
             "item": {
@@ -195,7 +195,7 @@ Example request body for contract with customer as person:
                 "selectedValue": "Modrá"
               }
             ],
-            "entryType": 2
+            "entryType": 2 // stock item
           },
           {
             "unit": {
@@ -203,7 +203,7 @@ Example request body for contract with customer as person:
               "unit": "ks",
               "decimalPlaces": 0
             },
-            "entryType": 3
+            "entryType": 3 // measurement unit
           },
           {
             "unit": {
@@ -212,25 +212,12 @@ Example request body for contract with customer as person:
               "decimalPlaces": 2
             },
             "measurementUnitRatio": 4,
-            "entryType": 4
-          },
-          {
-            "price": 3000,
-            "priceTotal": 15000,
-            "entryType": 7
-          },
-          {
-            "code": "21",
-            "taxRate": 21,
-            "taxableValue": 3000,
-            "taxValue": 630,
-            "valueWithTax": 3630,
-            "entryType": 8
+            "entryType": 4 // second measurement unit
           },
           {
             "price": 4500,
             "priceTotal": 22500,
-            "entryType": 5
+            "entryType": 5 // price
           },
           {
             "code": "21",
@@ -238,8 +225,21 @@ Example request body for contract with customer as person:
             "taxableValue": 4500,
             "taxValue": 945,
             "valueWithTax": 5445,
-            "entryType": 6
+            "entryType": 6 // tax
           }
+          {
+            "price": 3000,
+            "priceTotal": 15000,
+            "entryType": 7 // second price
+          },
+          {
+            "code": "21",
+            "taxRate": 21,
+            "taxableValue": 3000,
+            "taxValue": 630,
+            "valueWithTax": 3630,
+            "entryType": 8 // second tax
+          },
         ]
       }
     ]
@@ -302,7 +302,7 @@ Example request body:
         "date": "2024-06-20",
         "documentCurrencyCode": "CZK",
         "mainCurrencyCode": "CZK",
-        "headerType": 1
+        "headerType": 1 // main
       },
       {
         "isPerson": true,
@@ -314,21 +314,21 @@ Example request body:
         "middleName": "Alias",
         "cin": "11112222",
         "telephone": "+420420464646",
-        "headerType": 2
+        "headerType": 2 // contact
       },
       {
         "countryCode": "CZ",
         "postalCode": "12345",
         "addressLine1": "Fakturační",
         "city": "Adresa",
-        "headerType": 5
+        "headerType": 5 // contact(invoice) address
       },
       {
         "countryCode": "CZ",
         "addressLine1": "Dodací",
         "postalCode": "12345",
         "city": "Adresa",
-        "headerType": 6
+        "headerType": 6 // delivery address
       }
     ],
     "recordList": [
@@ -340,7 +340,7 @@ Example request body:
             "quantity": 5,
             "note": "note_test",
             "secondUnitQuantity": 20,
-            "entryType": 1
+            "entryType": 1 // main
           },
           {
             "item": {
@@ -367,7 +367,7 @@ Example request body:
                 "selectedValue": "Modrá"
               }
             ],
-            "entryType": 2
+            "entryType": 2 // stock item
           },
           {
             "unit": {
@@ -375,7 +375,7 @@ Example request body:
               "unit": "ks",
               "decimalPlaces": 0
             },
-            "entryType": 3
+            "entryType": 3 // measurement unit
           },
           {
             "unit": {
@@ -384,25 +384,12 @@ Example request body:
               "decimalPlaces": 2
             },
             "measurementUnitRatio": 4,
-            "entryType": 4
-          },
-          {
-            "price": 3000,
-            "priceTotal": 15000,
-            "entryType": 7
-          },
-          {
-            "code": "21",
-            "taxRate": 21,
-            "taxableValue": 3000,
-            "taxValue": 630,
-            "valueWithTax": 3630,
-            "entryType": 8
+            "entryType": 4 // second measurement unit
           },
           {
             "price": 4500,
             "priceTotal": 22500,
-            "entryType": 5
+            "entryType": 5 // price
           },
           {
             "code": "21",
@@ -410,7 +397,20 @@ Example request body:
             "taxableValue": 4500,
             "taxValue": 945,
             "valueWithTax": 5445,
-            "entryType": 6
+            "entryType": 6 // tax
+          },
+          {
+            "price": 3000,
+            "priceTotal": 15000,
+            "entryType": 7 // second price
+          },
+          {
+            "code": "21",
+            "taxRate": 21,
+            "taxableValue": 3000,
+            "taxValue": 630,
+            "valueWithTax": 3630,
+            "entryType": 8 // second tax
           }
         ]
       }
