@@ -19,12 +19,12 @@ Token must be filled in `Authorization` request header, for example `Authorizati
 
 Creates new contract.
 
-|              |                                                   |
-| ------------ | ------------------------------------------------- |
-| Endpoint:    | `POST /contract-planning-service/api/Contract`    |
-| Permissions: | `com.elixeum.contract-planning.create` (required) |
-| Parameters:  | `contract.contractTypeId` (required)              |
-|              | `contract.typeNumber` (required)                  |
+|              |                                                       |
+| ------------ | ----------------------------------------------------- |
+| Endpoint:    | `POST /contract-planning-service/api/Contract`        |
+| Permissions: | `com.elixeum.contract-planning.create` (required)     |
+| Parameters:  | `contract.typeNumber` (required)                      |
+|              | `contract.document.documentDefinition.code` (required)|
 
 #### contract.contractTypeId + contract.typeNumber
 
@@ -34,43 +34,57 @@ To get contractTypeId and typeNumber use endpoint [ContractType/List](#ContractT
 
 To get customFieldId use endpoint [ContractTypeCustomField/List](#ContractTypeCustomField)
 
-#### document.contact
+#### contract.document
 
-System supports 2 types of contact [Person, Organization].
-Person object:
+Document contains all informations about contact, addresses, contact person and items.
 
+Base structure:
 ```json
-"person": {
-    "pin": "nova@osoba.com",
-    "firstName": "Nová",
-    "lastName": "Osoba",
-    "phone": "+420464646462"
+"document": {
+  "documentDefinition": {}, // documentDefinition.Code can get from ContractType.DocumentDefinitionCode
+  "headerList": [],
+  "recordList": [] // items
 }
 ```
 
-Organization object:
+System supports 2 types of contact [`Person`, `Organization`].
 
+**Contact header filled like `Person`:**
 ```json
-"organization": {
-    "name": "Nová organizace",
-    "email": "nova@org.cz",
-    "phone": "+420131316515",
-    "cin": "12345678"
+{
+  "isPerson": true,
+  "email": "nova@osoba.com",
+  "firstName": "Nová",
+  "lastName": "Osoba",
+  "prefix": "Ing.",
+  "suffix": "Ph.D.",
+  "middleName": "Alias",
+  "cin": "11112222",
+  "telephone": "+420420464646",
+  "headerType": 2
 }
+```
 
-//optional part
-"agent": {
-    "person": {
-        "pin": "kontaktni@osoba.cz",
-        "firstName": "Kontaktní",
-        "lastName": "Osoba"
-    },
-    "phone": "+420161561651",
-    "isDeleted": false,
-    "email": "kontaktni@osoba.cz",
-    "agentType": {
-        "name": "Kontakt"
-    }
+**Contact header filled like `Organization`:**
+```json
+{
+  "isPerson": false,
+  "cin": "12345678",
+  "tin": "987654321",
+  "displayName": "Nová organizace",
+  "email": "nova@org.cz",
+  "phone": "+420131316515",
+  "email": "nova@osoba.com",
+  "telephone": "+420420464646",
+  "headerType": 2
+}
+// Contact person. Can be set only for organization
+{
+  "email": "kontaktni@osoba.cz",
+  "firstName": "Kontaktní",
+  "lastName": "Osoba",
+  "telephone": "+420161561651",
+  "headerType": 4
 }
 ```
 
@@ -82,83 +96,151 @@ Example request body for contract with customer as person:
 {
   "contract": {
     "name": "Testovací zakázka",
-    "contractTypeId": "7b2c7daf-d691-41d6-ad2c-b3f51ba90cc6",
     "typeNumber": 1,
     "startDate": "2023-11-14T23:00:42.604Z",
-    "deliveryType": 0,
-    "paymentType": 0,
-    "paymentStatus": 1,
-    "requiredDeliveryDate": "2023-11-20T09:53:00.000Z",
+    "requiredDeliveryDate": "2024-07-31T09:53:00.000Z",
     "note": "test",
     "latitude": 49.27190110341535,
     "longitude": 16.687297634751694,
-    "totalPrice": 500,
+    "totalPrice": 100,
+    "totalPriceWithVat": 121,
+    "totalPurchasePrice": 50,
+    "discountValue": 10,
     "currencyCode": "CZK",
-    "totalPriceAfterDiscount": 500,
-    "profit": 500,
+    "duration": "60",
+    "externalId": "My_custom_number_55",
+    "parentId": null,
     "contractFields": [
       {
-        "customFieldId": "d3ee8130-edaf-48eb-868c-b3e1982854e6",
-        "value": "true",
+        "customFieldId": "8beaa1c1-8e36-4712-a452-847ef24f67c8",
+        "value": "15",
         "selectedValue": null,
         "codeName": "Test",
         "order": 1
       }
     ]
   },
-
-  //optional part
   "document": {
-    "date": "2023-11-15T08:55:03.860Z",
-    "currencyCode": "CZK",
-    "contact": {
-      "roleType": 0, //customer
-      "email": "nova@osoba.com",
-      "person": {
-        "pin": "nova@osoba.com",
+    "documentDefinition": {
+      "code": "20"
+    },
+    "headerList": [
+      {
+        "date": "2024-06-20",
+        "documentCurrencyCode": "CZK",
+        "mainCurrencyCode": "CZK",
+        "headerType": 1
+      },
+      {
+        "isPerson": true,
+        "email": "nova@osoba.com",
         "firstName": "Nová",
         "lastName": "Osoba",
-        "phone": "+420464646462"
+        "prefix": "Ing.",
+        "suffix": "Ph.D.",
+        "middleName": "Alias",
+        "cin": "11112222",
+        "telephone": "+420420464646",
+        "headerType": 2
       },
-      "phone": "+420464646462",
-      "displayName": "Nová Osoba",
-      "identifier": "nova@osoba.com",
-      "addresses": [
-        {
-          "contactPurposeType": {
-            "code": "BILLING"
-          },
-          "addressLine1": "Fakturační",
-          "postalCode": "12345",
-          "countryCode": "CZ",
-          "city": "Adresa"
-        },
-        {
-          "contactPurposeType": {
-            "code": "DELIVERY"
-          },
-          "addressLine1": "Dodací",
-          "postalCode": "12345",
-          "countryCode": "CZ",
-          "city": "Adresa"
-        }
-      ]
-    },
-    "items": [
       {
-        "itemNumber": "1",
-        "name": "Testovací artikl",
-        "quantity": 5,
-        "measurementUnit": "Ks",
-        "measurementUnitId": "6d69d6d5-4208-46b2-8572-0c55fac54353",
-        "price": 100,
-        "priceWithVat": 100,
-        "priceTotal": 500,
-        "priceTotalWithVat": 500,
-        "position": 1,
-        "currencyCode": "CZK",
-        "currencySymbol": "Kč",
-        "itemFields": []
+        "countryCode": "CZ",
+        "postalCode": "12345",
+        "addressLine1": "Fakturační",
+        "city": "Adresa",
+        "headerType": 5
+      },
+      {
+        "countryCode": "CZ",
+        "addressLine1": "Dodací",
+        "postalCode": "12345",
+        "city": "Adresa",
+        "headerType": 6
+      }
+    ],
+    // items
+    "recordList": [
+      {
+        "position": 0,
+        "entryList": [
+          {
+            "displayName": "Test_artikl_1",
+            "quantity": 5,
+            "note": "note_test",
+            "secondUnitQuantity": 20,
+            "entryType": 1
+          },
+          {
+            "item": {
+              "id": "8cb0f6ba-84a8-410e-ab34-bdc7627a26cb",
+              "itemNumber": "60025",
+              "name": "Test_artikl_1",
+              "description": "",
+              "groupId": "9e176565-9804-409c-a4dd-46dcf9d2fe00",
+              "groupNumber": 1,
+              "groupName": "Skupina 1",
+              "taxCode": "21"
+            },
+            "itemFieldList": [
+              {
+                "customField": {
+                  "id": "de61d907-28eb-4960-b3ae-fb21025b3965",
+                  "name": "Barva",
+                  "codeName": "barva",
+                  "fieldType": 1,
+                  "dataType": 8,
+                  "order": 5
+                },
+                "value": "c5dced09-8740-4d48-b269-4dec1e3f2c97",
+                "selectedValue": "Modrá"
+              }
+            ],
+            "entryType": 2
+          },
+          {
+            "unit": {
+              "id": "8a89c27a-e9df-4edb-aa44-6605c0928a36",
+              "unit": "ks",
+              "decimalPlaces": 0
+            },
+            "entryType": 3
+          },
+          {
+            "unit": {
+              "id": "1cb88c21-fe6a-4160-b4a7-b79cc090adda",
+              "unit": "kg",
+              "decimalPlaces": 2
+            },
+            "measurementUnitRatio": 4,
+            "entryType": 4
+          },
+          {
+            "price": 3000,
+            "priceTotal": 15000,
+            "entryType": 7
+          },
+          {
+            "code": "21",
+            "taxRate": 21,
+            "taxableValue": 3000,
+            "taxValue": 630,
+            "valueWithTax": 3630,
+            "entryType": 8
+          },
+          {
+            "price": 4500,
+            "priceTotal": 22500,
+            "entryType": 5
+          },
+          {
+            "code": "21",
+            "taxRate": 21,
+            "taxableValue": 4500,
+            "taxValue": 945,
+            "valueWithTax": 5445,
+            "entryType": 6
+          }
+        ]
       }
     ]
   }
@@ -174,7 +256,6 @@ Updates specific contract.
 | Endpoint:    | `PUT /contract-planning-service/api/Contract`   |
 | Permissions: | `com.elixeum.contract-planning.edit` (required) |
 | Parameters:  | `contract.id` (required)                        |
-|              | `contract.contractTypeId` (required)            |
 |              | `contract.typeNumber` (required)                |
 
 ### Examples
@@ -184,97 +265,154 @@ Example request body:
 ```json
 {
   "contract": {
-    "id": "f75a5d05-41f0-4176-990b-7f81447be521",
-    "externalId": null,
-    "typeNumber": 1,
-    "contractTypeId": "7b2c7daf-d691-41d6-ad2c-b3f51ba90cc6",
-    "contractNumber": "Z230000254",
+    "id": "72af879c-4618-4ac6-ad80-bcaf71d2eb92",
     "name": "Testovací zakázka",
-    "statusId": "0121d2ba-7b35-4c81-9560-256b3013df36",
-    "contactRoleId": "12d2d1ab-287e-43ed-87eb-30ece061e69a",
-    "contactDisplayName": "Nová Osoba",
-    "deliveryType": 0,
-    "paymentType": 0,
-    "paymentStatus": 1,
-    "requiredDeliveryDate": "2023-11-20T10:53:00+01:00",
-    "startDate": "2023-11-15T00:00:42.604+01:00",
-    "completionDate": null,
-    "note": "test (update)",
-    "latitude": 49.22651691750713,
-    "longitude": 17.666979661367296,
+    "typeNumber": 1,
+    "startDate": "2023-11-14T23:00:42.604Z",
+    "requiredDeliveryDate": "2024-07-31T09:53:00.000Z",
+    "statusId": "3724a57c-f0af-4317-b8ee-a05ea380bc14",
+    "note": "update",
+    "latitude": 49.27190110341535,
+    "longitude": 16.687297634751694,
+    "totalPrice": 200,
+    "totalPriceWithVat": 242,
+    "totalPurchasePrice": 100,
+    "discountValue": 20,
+    "currencyCode": "CZK",
+    "duration": "60",
+    "externalId": "My_custom_number_55",
     "parentId": null,
     "contractFields": [
       {
-        "customFieldId": "d3ee8130-edaf-48eb-868c-b3e1982854e6",
-        "value": "true",
+        "customFieldId": "8beaa1c1-8e36-4712-a452-847ef24f67c8",
+        "value": "19",
         "selectedValue": null,
         "codeName": "Test",
         "order": 1
       }
-    ],
-    "totalPrice": 500,
-    "totalPriceWithVat": 500,
-    "currencyCode": "CZK",
-    "totalPurchasePrice": 0,
-    "discountValue": 0,
-    "totalPriceAfterDiscount": 500,
-    "profit": 500,
-    "duration": null,
-    "endDate": null
+    ]
   },
-
-  //optional part
   "document": {
-    "date": "2023-11-15T08:55:03.860Z",
-    "currencyCode": "CZK",
-    "contact": {
-      "roleType": 0, //customer
-      "email": "nova@osoba.com",
-      "person": {
-        "pin": "nova@osoba.com",
+    "id": "f8d3225d-2742-480a-bff6-a85c546ff5ea",
+    "documentDefinition": {
+      "code": "20"
+    },
+    "headerList": [
+      {
+        "date": "2024-06-20",
+        "documentCurrencyCode": "CZK",
+        "mainCurrencyCode": "CZK",
+        "headerType": 1
+      },
+      {
+        "isPerson": true,
+        "email": "nova@osoba.com",
         "firstName": "Nová",
         "lastName": "Osoba",
-        "phone": "+420464646462"
+        "prefix": "Ing.",
+        "suffix": "Ph.D.",
+        "middleName": "Alias",
+        "cin": "11112222",
+        "telephone": "+420420464646",
+        "headerType": 2
       },
-      "phone": "+420464646462",
-      "displayName": "Nová Osoba",
-      "identifier": "nova@osoba.com",
-      "addresses": [
-        {
-          "contactPurposeType": {
-            "code": "BILLING"
-          },
-          "addressLine1": "Fakturační",
-          "postalCode": "12345",
-          "countryCode": "CZ",
-          "city": "Adresa"
-        },
-        {
-          "contactPurposeType": {
-            "code": "DELIVERY"
-          },
-          "addressLine1": "Dodací",
-          "postalCode": "12345",
-          "countryCode": "CZ",
-          "city": "Adresa"
-        }
-      ]
-    },
-    "items": [
       {
-        "itemNumber": "1",
-        "name": "Testovací artikl",
-        "quantity": 5,
-        "measurementUnit": "Ks",
-        "measurementUnitId": "6d69d6d5-4208-46b2-8572-0c55fac54353",
-        "price": 100,
-        "priceWithVat": 100,
-        "priceTotal": 500,
-        "priceTotalWithVat": 500,
-        "position": 1,
-        "currencyCode": "CZK",
-        "currencySymbol": "Kč",
-        "itemFields": []
+        "countryCode": "CZ",
+        "postalCode": "12345",
+        "addressLine1": "Fakturační",
+        "city": "Adresa",
+        "headerType": 5
+      },
+      {
+        "countryCode": "CZ",
+        "addressLine1": "Dodací",
+        "postalCode": "12345",
+        "city": "Adresa",
+        "headerType": 6
+      }
+    ],
+    "recordList": [
+      {
+        "position": 0,
+        "entryList": [
+          {
+            "displayName": "Test_artikl_1",
+            "quantity": 5,
+            "note": "note_test",
+            "secondUnitQuantity": 20,
+            "entryType": 1
+          },
+          {
+            "item": {
+              "id": "8cb0f6ba-84a8-410e-ab34-bdc7627a26cb",
+              "itemNumber": "60025",
+              "name": "Test_artikl_1",
+              "description": "",
+              "groupId": "9e176565-9804-409c-a4dd-46dcf9d2fe00",
+              "groupNumber": 1,
+              "groupName": "Skupina 1",
+              "taxCode": "21"
+            },
+            "itemFieldList": [
+              {
+                "customField": {
+                  "id": "de61d907-28eb-4960-b3ae-fb21025b3965",
+                  "name": "Barva",
+                  "codeName": "barva",
+                  "fieldType": 1,
+                  "dataType": 8,
+                  "order": 5
+                },
+                "value": "c5dced09-8740-4d48-b269-4dec1e3f2c97",
+                "selectedValue": "Modrá"
+              }
+            ],
+            "entryType": 2
+          },
+          {
+            "unit": {
+              "id": "8a89c27a-e9df-4edb-aa44-6605c0928a36",
+              "unit": "ks",
+              "decimalPlaces": 0
+            },
+            "entryType": 3
+          },
+          {
+            "unit": {
+              "id": "1cb88c21-fe6a-4160-b4a7-b79cc090adda",
+              "unit": "kg",
+              "decimalPlaces": 2
+            },
+            "measurementUnitRatio": 4,
+            "entryType": 4
+          },
+          {
+            "price": 3000,
+            "priceTotal": 15000,
+            "entryType": 7
+          },
+          {
+            "code": "21",
+            "taxRate": 21,
+            "taxableValue": 3000,
+            "taxValue": 630,
+            "valueWithTax": 3630,
+            "entryType": 8
+          },
+          {
+            "price": 4500,
+            "priceTotal": 22500,
+            "entryType": 5
+          },
+          {
+            "code": "21",
+            "taxRate": 21,
+            "taxableValue": 4500,
+            "taxValue": 945,
+            "valueWithTax": 5445,
+            "entryType": 6
+          }
+        ]
       }
     ]
   }
