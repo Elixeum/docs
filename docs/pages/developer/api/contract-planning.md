@@ -24,7 +24,6 @@ Creates new contract.
 | Endpoint:    | `POST /contract-planning-service/api/Contract`        |
 | Permissions: | `com.elixeum.contract-planning.create` (required)     |
 | Parameters:  | `contract.typeNumber` (required)                      |
-|              | `contract.document.documentDefinition.code` (required)|
 
 #### contract.contractTypeId + contract.typeNumber
 
@@ -41,7 +40,7 @@ Document contains all informations about contact, addresses, contact person and 
 Base structure:
 ```json
 "document": {
-  "documentDefinition": {}, // documentDefinition.Code can get from ContractType.DocumentDefinitionCode
+  "documentDefinition": {}, // documentDefinition.Code is filled automatically from ContractType.DocumentDefinitionCode
   "headerList": [],
   "recordList": [] // items
 }
@@ -121,9 +120,6 @@ Example request body for contract with customer as person:
     ]
   },
   "document": {
-    "documentDefinition": {
-      "code": "20"
-    },
     "headerList": [
       {
         "date": "2024-06-20",
@@ -294,9 +290,6 @@ Example request body:
   },
   "document": {
     "id": "f8d3225d-2742-480a-bff6-a85c546ff5ea",
-    "documentDefinition": {
-      "code": "20"
-    },
     "headerList": [
       {
         "date": "2024-06-20",
