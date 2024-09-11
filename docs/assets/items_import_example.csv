@@ -1,0 +1,10 @@
+type;itemNumber;name;alternateName;isActive;groupNumber;description;isComposite;taxCode;measurementUnit;secondMeasurementUnit;measurementUnitRatio;sizeMeasurementUnit;width;height;depth;diameter;weightMeasurementUnit;netWeight;grossWeight;density;defaultPurchasePrice;defaultPurchasePriceWithVat;defaultSalePrice;defaultSalePriceWithVat;defaultPriceMargin
+1;test-import-1;Import test 1;Test item 1;true;123;Test description 1;true;15;Pcs;L;1;m;1;2;3;10;kg;1;2;3;100;110;500;550;
+2;test-import-2;Import test 2;Test item 2;true;123;Test description 2;true;21;Pcs;L;1;m;4;5;6;20;kg;4;5;6;1000;1100;5000;5500;
+1;test-import-3;Import test 3;Test item 3;true;123;Test description 3;false;15;Pcs;L;1;m;1;2;3;10;kg;1;2;3;100;110;500;550;
+2;test-import-4;Import test 4;Test item 4;true;123;Test description 4;false;21;Pcs;L;1;m;4;5;6;20;kg;4;5;6;1000;1100;5000;5500;
+1;test-import-5;Import test 5;Test item 5;true;123;Test description 5;false;15;Pcs;L;1;m;1;2;3;10;kg;1;2;3;100;110;500;550;
+2;test-import-6;Import test 6;Test item 6;true;123;Test description 6;false;21;Pcs;L;1;m;4;5;6;20;kg;4;5;6;1000;1100;5000;5500;
+1;test-import-7;Import test 7;Test item 7;true;123;Test description 7;false;21;Pcs;L;1;m;1;2;3;10;kg;1;2;3;100;110;500;550;
+2;test-import-8;Import test 8;Test item 8;false;123;Test description 8;false;21;Pcs;L;1;;;;;;;;;;;;;;
+1;test-import-9;Import test, mandatory fields only;;;123;;;;Pcs;;;;;;;;;;;;;;;;

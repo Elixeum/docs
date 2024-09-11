@@ -1,0 +1,6 @@
+itemNumber;type;value;isMain
+test-import-1;1;EAN 123;true
+test-import-1;2;SKU 123;false
+test-import-1;3;MATCH 123;
+test-import-2;1;EAN test-import-2;true
+test-import-2;2;SKU test-import-2;false
