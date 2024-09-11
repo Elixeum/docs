@@ -1,0 +1,6 @@
+itemNumber;parentItemNumber;quantity;order;note
+test-import-3;test-import-1;1;1;Example note
+test-import-4;test-import-1;2;2;Lorem ipsum
+test-import-5;test-import-2;3;3;Next 2 notes are empty
+test-import-6;test-import-2;4;4;
+test-import-7;test-import-2;1;1;
