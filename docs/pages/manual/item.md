@@ -69,12 +69,11 @@ File header definition:
 
 Detailed information about each column can be found in the following table:
 
-| itemNumber    | type | value             | isMain |
-| ------------- | ---- | ----------------- | ------ |
-| test-import-1 | 1    | EAN 123           | true   |
-| test-import-1 | 2    | SKU 123           | false  |
-| test-import-1 | 3    | MATCH 123         |        |
-| test-import-2 | 1    | EAN test-import-2 | true   |
-| test-import-2 | 2    | SKU test-import-2 | false  |
+| Column     | Description               | Value type     | Mandatory | Example             | Note                        |
+| ---------- | ------------------------- | -------------- | --------- | ------------------- | --------------------------- |
+| itemNumber | Article code              | Text           | Yes       | test-import-1       |                             |
+| type       | Code type                 | Dial (Integer) | Yes       | 1                   | 1 - EAN, 2 - SKU, 3 - MATCH |
+| value      | Value                     | Text           | Yes       | EAN Value 123456789 |                             |
+| isMain     | Whether this code is main | True / False   | No        | true                | Default value is false      |
 
 File example: [Download](/assets/lookup_codes_import_example.csv ":ignore")
