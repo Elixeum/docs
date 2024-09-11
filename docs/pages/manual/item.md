@@ -12,7 +12,7 @@ Detailed information about each column can be found in the following table:
 
 | Column                      | Description                             | Value type     | Mandatory | Example                        | Note                                                                                                              |
 | --------------------------- | --------------------------------------- | -------------- | --------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| type                        | Item type                               | Dial (Integer) | Yes       | 1                              | 1 - Goods and materials, 2 - Services and activities                                                              |
+| type                        | Item type                               | Enum (Integer) | Yes       | 1                              | 1 - Goods and materials, 2 - Services and activities                                                              |
 | itemNumber                  | Article code                            | Text           | Yes       | test-import                    |                                                                                                                   |
 | name                        | Aricle name                             | Text           | Yes       | Test Import                    |                                                                                                                   |
 | alternateName               | Alternative name                        | Text           | No        | Article for testing            |                                                                                                                   |
@@ -72,7 +72,7 @@ Detailed information about each column can be found in the following table:
 | Column     | Description               | Value type     | Mandatory | Example             | Note                        |
 | ---------- | ------------------------- | -------------- | --------- | ------------------- | --------------------------- |
 | itemNumber | Article code              | Text           | Yes       | test-import-1       |                             |
-| type       | Code type                 | Dial (Integer) | Yes       | 1                   | 1 - EAN, 2 - SKU, 3 - MATCH |
+| type       | Code type                 | Enum (Integer) | Yes       | 1                   | 1 - EAN, 2 - SKU, 3 - MATCH |
 | value      | Value                     | Text           | Yes       | EAN Value 123456789 |                             |
 | isMain     | Whether this code is main | True / False   | No        | true                | Default value is false      |
 
