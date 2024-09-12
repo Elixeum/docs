@@ -5,8 +5,8 @@
 Items can be imported via a CSV file (UTF-8). This file should follow the following structure:
 
 File header definition:
-<code>type;itemNumber;name;alternateName;isActive;groupNumber;description;isComposite;taxCode;measurementUnit;secondMeasurementUnit;measurementUnitRatio;sizeMeasurementUnit;width;height;depth;diameter;weightMeasurementUnit;netWeight;grossWeight;density;defaultPurchasePrice;defaultPurchasePriceWithVat;defaultSalePrice;defaultSalePriceWithVat;defaultPriceMargin
-</code>
+<code>type;itemNumber;name;alternateName;isActive;groupNumber;description;isComposite;taxCode;measurementUnit;secondMeasurementUnit;measurementUnitRatio;sizeMeasurementUnit;width;height;</code>
+<code>depth;diameter;weightMeasurementUnit;netWeight;grossWeight;density;defaultPurchasePrice;defaultPurchasePriceWithVat;defaultSalePrice;defaultSalePriceWithVat;defaultPriceMargin</code>
 
 Detailed information about each column can be found in the following table:
 
