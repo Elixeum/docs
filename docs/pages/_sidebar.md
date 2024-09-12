@@ -10,4 +10,5 @@
  - [Data Warehouse](/developer/api/data-warehouse)
 - Manual
  - [User](/manual/user)
+ - [Item](/manual/item)
  - [Custom Email server](/manual/custom-smtp-server)
