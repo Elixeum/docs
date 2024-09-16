@@ -5,8 +5,10 @@
 Items can be imported via a CSV file (UTF-8). This file should follow the following structure:
 
 File header definition:
-<code>type;itemNumber;name;alternateName;isActive;groupNumber;description;isComposite;taxCode;measurementUnit;secondMeasurementUnit;measurementUnitRatio;sizeMeasurementUnit;width;height;</code>
-<code>depth;diameter;weightMeasurementUnit;netWeight;grossWeight;density;defaultPurchasePrice;defaultPurchasePriceWithVat;defaultSalePrice;defaultSalePriceWithVat;defaultPriceMargin</code>
+
+```text
+type;itemNumber;name;alternateName;isActive;groupNumber;description;isComposite;taxCode;measurementUnit;secondMeasurementUnit;measurementUnitRatio;sizeMeasurementUnit;width;height;depth;diameter;weightMeasurementUnit;netWeight;grossWeight;density;defaultPurchasePrice;defaultPurchasePriceWithVat;defaultSalePrice;defaultSalePriceWithVat;defaultPriceMargin
+```
 
 Detailed information about each column can be found in the following table:
 
@@ -46,7 +48,10 @@ File example: [Download](/assets/items_import_example.csv ":ignore")
 It is also possible to import item composition info. That is, binding of certain items to a parent composite. The CSV file should follow the following structure:
 
 File header definition:
-<code>itemNumber;parentItemNumber;quantity;order;note</code>
+
+```text
+itemNumber;parentItemNumber;quantity;order;note
+```
 
 Detailed information about each column can be found in the following table:
 
@@ -65,7 +70,10 @@ File example: [Download](/assets/compositions_import_example.csv ":ignore")
 Lookup codes can be imported as well. The CSV file should follow the following structure:
 
 File header definition:
-<code>itemNumber;type;value;isMain</code>
+
+```text
+itemNumber;type;value;isMain
+```
 
 Detailed information about each column can be found in the following table:
 
