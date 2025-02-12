@@ -7,6 +7,7 @@
    - [Elixeum API](/developer/api/README)
    - [Contract Planning](/developer/api/contract-planning)
    - [Attachment](/developer/api/attachment)
+   - [Item Maintenance](/developer/api/item-maintenance)
  - [Data Warehouse](/developer/api/data-warehouse)
 - Manual
  - [User](/manual/user)
