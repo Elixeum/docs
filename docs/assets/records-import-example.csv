@@ -1,0 +1,6 @@
+itemType;itemNumber;name;note;quantity;price;discount;parentNumber
+1;imported-item-1;Imported item 1;Record created by import;1;100.5;10;
+1;imported-item-2;Imported item 2;Record created by import;2;200.5;20;
+1;imported-item-3;Imported item 3;Record created by import;3;300.5;30;imported-item-2
+1;imported-item-4;Imported item 4;Record created by import;4;400.5;40;imported-item-2
+2;imported-item-5;Imported item 5;Record created by import;5;500.5;50;
