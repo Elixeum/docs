@@ -12,4 +12,5 @@
 - Manual
  - [User](/manual/user)
  - [Item](/manual/item)
+ - [Record](/manual/record)
  - [Custom Email server](/manual/custom-smtp-server)
