@@ -1,4 +1,4 @@
-itemType;itemNumber;name;note;quantity;price;discount;parentNumber
+itemType;itemNumber;name;note;quantity;price;discount;parentItemNumber
 1;imported-item-1;Imported item 1;Record created by import;1;100.5;10;
 1;imported-item-2;Imported item 2;Record created by import;2;200.5;20;
 1;imported-item-3;Imported item 3;Record created by import;3;300.5;30;imported-item-2
