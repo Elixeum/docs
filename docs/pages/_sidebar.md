@@ -8,6 +8,7 @@
    - [Contract Planning](/developer/api/contract-planning)
    - [Attachment](/developer/api/attachment)
    - [Item Maintenance](/developer/api/item-maintenance)
+   - [Automatické pohyby podle LookupCodes](/developer/api/automatic-lookup-code-stock-movements)
  - [Data Warehouse](/developer/api/data-warehouse)
 - Manual
  - [User](/manual/user)
